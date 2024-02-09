@@ -12,13 +12,14 @@ public class Homework4 {
 			d++;
 			}
 		int e = b / d;	//平均值
+		System.out.println("平均值為" + e);
+		System.out.println("大於平均值的有:");
 		for (int c = 0; c < a.length; c++) {
 			if(e<a[c]) {
 				System.out.print("a["+c+"]"+"\t");
 				System.out.println(a[c]);
 			}
 		}
-			System.out.println("平均值為" + e);
 //================================================================================================
 //		Scanner sc = new Scanner(System.in);
 //		System.out.println("請輸入一字串：");
@@ -50,8 +51,8 @@ public class Homework4 {
 //=================================================================================================
 //		Scanner sc = new Scanner(System.in);
 //		System.out.println("請輸入你想借的金額");
-//		int b = sc.nextInt();
-//		int e = 0;
+//		int loan = sc.nextInt();
+//		int e = 0; // 人數
 //		int a[][] = new int[50][1];
 //		System.out.print("有錢可以借的有");
 //		a[25][0] = 2500;
@@ -61,64 +62,81 @@ public class Homework4 {
 //		a[27][0] = 1200;
 //		for (int c = 0; c < a.length; c++) {
 //			for (int d = 0; d < a[c].length; d++) {
-//				if (b <= a[c][d]) {
+//				if (loan <= a[c][d]) {
 //					e++;
 //					System.out.print(c + " ");
 //				}
 //			}
 //		}
+//		System.out.println("");
 //		System.out.println("共" + e + "人!");
 //=================================================================================================
 //		Scanner sc = new Scanner(System.in);
 //		System.out.println("請輸入西元");
-//		int a = sc.nextInt();
+//		int ad = sc.nextInt();
 //		System.out.println("請輸入月");
-//		int b = sc.nextInt();
+//		int month = sc.nextInt();
 //		System.out.println("請輸入日");
-//		int c = sc.nextInt();
-//		int e[][] = { { 0 }, { 31 }, { 29 }, { 31 }, { 30 }, { 31 }, { 30 }, { 31 }, { 31 }, { 30 }, { 31 }, { 30 },
-//				{ 31 } };
+//		int date = sc.nextInt();
+//		int everyMonth[] = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 //		int g = 0; // 總天數
-//		if (a % 4 == 0) {
-//			if (c <= e[b][0]) {
-//				for (int h = 0; h < b; h++) {
-//					g = g + e[h][0];
+//
+//		if (month <= 12) {
+//			// 閏年的計算
+//			if (ad % 4 == 0) {
+//				if (date <= everyMonth[month]) {
+//					for (int h = 0; h < month; h++) {
+//						g = g + everyMonth[h];
+//					}
+//					System.out.println("輸入的日期為該年的第" + (g + date) + "天");
+//				} else {
+//					System.out.println("日期輸入錯誤");
 //				}
-//				System.out.println("輸入的日期為該年的第" + (g + c) + "天");
-//			} else {
-//				System.out.println("日期輸入錯誤");
+//			} else { // 非閏年的計算
+//				if (date > everyMonth[month] || ((month == 2) && (date > everyMonth[2] - 1))) {
+//					System.out.println("日期輸入錯誤");
+//				} else if (month == 2) { // 非閏年2月獨立計算
+//					for (int h = 0; h < month; h++) {
+//						g = g + everyMonth[h];
+//					}
+//					System.out.println("輸入的日期為該年的第" + (g + date) + "天");
+//				} else { // 非閏年除了2月之外的各個月計算
+//					for (int h = 0; h < month; h++) {
+//						g = g + everyMonth[h];
+//					}
+//					g = g - 1;
+//					System.out.println("輸入的日期為該年的第" + (g + date) + "天");
+//				}
 //			}
 //		} else {
-//			if (c > e[b][0] || ((b == 2) && (c > e[2][0] - 1))) {
-//				System.out.println("日期輸入錯誤");
-//			} else if (b == 2) {
-//				for (int h = 0; h < b; h++) {
-//					g = g + e[h][0];
-//				}
-//				System.out.println("輸入的日期為該年的第" + (g + c) + "天");
-//			} else {
-//				for (int h = 0; h < b; h++) {
-//					g = g + e[h][0];
-//				}
-//				g = g - 1;
-//				System.out.println("輸入的日期為該年的第" + (g + c) + "天");
-//			}
+//			System.out.println("月份輸入錯誤");
 //		}
 //=================================================================================================
 //		int a[][] = { { 10, 35, 40, 100, 90, 85, 75, 70 }, { 37, 75, 77, 89, 64, 75, 70, 95 },
 //				{ 100, 70, 79, 90, 75, 70, 79, 90 }, { 77, 95, 70, 87, 60, 75, 85, 89 },
 //				{ 98, 70, 89, 90, 75, 90, 89, 90 }, { 90, 80, 100, 75, 50, 20, 99, 75 } };
-//		int num1=0;int num2=0;int num3=0;int num4=0;int num5=0;int num6=0;int num7=0;int num8=0;
-//		for(int b=0;b<a.length;b++) {
-//			int maxNum=0;
-//			int d=0;
-//			for(int c=0;c<a[b].length;c++) {
-//				if(maxNum<a[b][c]) {
-//					maxNum=a[b][c];
-//					d=c;
+//		int num1 = 0;
+//		int num2 = 0;
+//		int num3 = 0;
+//		int num4 = 0;
+//		int num5 = 0;
+//		int num6 = 0;
+//		int num7 = 0;
+//		int num8 = 0;
+//
+//		// 找出各個陣列裡最大的值的位置
+//		for (int b = 0; b < a.length; b++) {
+//			int maxNum = 0;
+//			int d = 0;
+//			for (int c = 0; c < a[b].length; c++) {
+//				if (maxNum < a[b][c]) {
+//					maxNum = a[b][c];
+//					d = c;
 //				}
 //			}
-//			switch(d) {
+//
+//			// 將各個位置出現的次數計算
+//			switch (d) {
 //			case 0:
 //				++num1;
 //				break;
@@ -145,6 +163,7 @@ public class Homework4 {
 //				break;
 //			}
 //		}
-//		System.out.println("各個考最高分次數:1號"+num1+"次,"+"2號"+num2+"次,"+"3號"+num3+"次,"+"4號"+num4+"次,"+"5號"+num5+"次,"+"6號"+num6+"次,"+"7號"+num7+"次,"+"8號"+num8+"次");
+//		System.out.println("各個考最高分次數:1號" + num1 + "次," + "2號" + num2 + "次," + "3號" + num3 + "次," + "4號" + num4 + "次,"
+//				+ "5號" + num5 + "次," + "6號" + num6 + "次," + "7號" + num7 + "次," + "8號" + num8 + "次");
 	}
 }
