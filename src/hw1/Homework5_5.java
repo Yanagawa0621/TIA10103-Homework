@@ -15,8 +15,7 @@ public class Homework5_5 {
 						verify = verify + a;
 						break; // 拿到符合規則的東西後跳出無限迴圈
 					} else {
-						char change = (char) a;
-						verify = verify + change;
+						verify = verify + (char) a;
 						break; // 拿到符合規則的東西後跳出無限迴圈
 					}
 				} else {
