@@ -28,15 +28,21 @@ public class Homework5_5 {
 	}
 
 	public static void main(String[] args) {
-		String get = getAuthCode();
-		System.out.println(get);
-		Scanner sc = new Scanner(System.in);
-		System.out.println("請輸入驗證碼");
-		String reply = sc.nextLine();
-		if (reply.equals(get)) {
-			System.out.println("輸入正確");
-		} else {
-			System.out.println("輸入錯誤");
+		again: for (;;) {
+			String get = getAuthCode();
+			System.out.println("本次隨機產生驗證碼為:");
+			System.out.println(get);
+			Scanner sc = new Scanner(System.in);
+			System.out.println("請輸入驗證碼");
+			String reply = sc.nextLine();
+			if (reply.equals(get)) {
+				System.out.println("輸入正確");
+				break;
+			} else {
+				System.out.println("輸入錯誤");
+				System.out.println("=====重新生成驗證碼=====");
+				continue again;
+			}
 		}
 	}
 }
