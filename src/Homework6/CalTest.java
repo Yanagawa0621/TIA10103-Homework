@@ -28,13 +28,13 @@ public class CalTest {
 							continue re;
 						}
 					} catch (InputMismatchException a) {
-						System.out.println("輸入格式不正確");
+						System.out.println(a.toString()+":輸入格式不正確");
 						System.out.println("請從新輸入y的值");
 						continue re2;
 					}
 				}
 			} catch (InputMismatchException b) {
-				System.out.println("輸入格式不正確");
+				System.out.println(b.toString()+":輸入格式不正確");
 				System.out.println("請從新輸入x的值");
 				continue re;
 			}
