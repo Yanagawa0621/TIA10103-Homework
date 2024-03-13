@@ -18,6 +18,7 @@ public class AnimalMain implements Serializable {
 		a[1] = new Dog("Natu");
 		a[2] = new Cat("Miru");
 		a[3] = new Cat("Kurimu");
+		ObjectInputStream ois = null;
 
 		try {
 			File fn = new File("C:\\data");
@@ -33,7 +34,7 @@ public class AnimalMain implements Serializable {
 			fos.close();
 
 			FileInputStream fis = new FileInputStream(fi);
-			ObjectInputStream ois = new ObjectInputStream(fis);
+			ois = new ObjectInputStream(fis);
 			while (true) {
 				Object ot = ois.readObject();
 				if (ot instanceof Dog) {
@@ -42,13 +43,18 @@ public class AnimalMain implements Serializable {
 					((Cat) ot).speak();
 				}
 			}
-			
 		} catch (java.io.EOFException e) {
-			System.out.println("讀取完畢");;
+			System.out.println("讀取完畢");
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				ois.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }
