@@ -28,12 +28,17 @@ class Account {
 			}
 		}
 		lumpSum -= amount;
-		
+		int o=0;
+		o++;
 		System.out.println("熊大領了" + amount + ",帳戶共有:" + lumpSum);
+		if(o==10) {
+			notify();
+		}
 		if (lumpSum < 2000) {
 			System.out.println("熊大看到餘額在2000以下,要求匯款");
 			notify();
 		}
+		
 
 	}
 }
